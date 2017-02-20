@@ -231,3 +231,4 @@ kubectl set image deployment/coding-app coding-app=coding:0.0.2
 # edit
 kubectl edit deployment coding-app
 ```
+ 
