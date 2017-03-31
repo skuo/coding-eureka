@@ -42,7 +42,7 @@ def build_and_debug():
         local("pwd")
         read_build_version()
         local("./gradlew clean build")
-        local("java -server -Xms1700M -Xmx1700M -Xdebug -Xrunjdwp:transport=dt_socket,address=4000,server=y,suspend=n -jar build/libs/coding-config-server-%s.jar" % VERSION)
+        local("java -server -Xms1700M -Xmx1700M -Xdebug -Xrunjdwp:transport=dt_socket,address=4000,server=y,suspend=n -jar build/libs/coding-eureka-server-%s.jar" % VERSION)
    
 @task
 def build_skip_tests_and_debug():
@@ -55,14 +55,14 @@ def build_and_start():
         local("pwd")
         read_build_version()
         local("./gradlew clean build")
-        local("java -server -Xms1700M -Xmx1700M -jar build/libs/coding-config-server-%s.jar" % VERSION)
+        local("java -server -Xms1700M -Xmx1700M -jar build/libs/coding-eureka-server-%s.jar" % VERSION)
 
 @task
 def restart_and_debug():
     with settings(warn_only=True):
         local("pwd")
         read_build_version()
-        local("java -server -Xms1700M -Xmx1700M -Xdebug -Xrunjdwp:transport=dt_socket,address=4000,server=y,suspend=n -jar build/libs/coding-config-server-%s.jar" % VERSION)
+        local("java -server -Xms1700M -Xmx1700M -Xdebug -Xrunjdwp:transport=dt_socket,address=4000,server=y,suspend=n -jar build/libs/coding-eureka-server-%s.jar" % VERSION)
 
 @task
 def build_and_startDocker():
@@ -76,7 +76,7 @@ def build_and_startDocker():
 def startDocker():
     with settings(warn_only=True):
         local("pwd")
-        local("docker run -p:8080:8080 -v /data:/data -t --rm coding-config-server:%s --spring.profiles.active=dev" % VERSION)
+        local("docker run -p:8080:8080 -v /data:/data -t --rm coding-eureka-server:%s --spring.profiles.active=dev" % VERSION)
     
 
 @task
